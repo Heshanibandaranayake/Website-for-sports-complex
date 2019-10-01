@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create an Account</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript">
+		function validateEmail(){
+			var email = document.forms["signup"]["email"].value;;
+			var atPosition = email.indexOf("@");
+			var dotPosition = email.lastIndexOf(".");
+
+			if(atPosition<1 || dotPosition<atPosition+2 || dotPosition+2>=email.length){
+				alert("Invalid Email format");
+			}
+
+		}
+		function validatePassword(){
+			var psw = document.getElementById('password').value;
+			var n = psw.length;
+			
+			if(n <8){
+				alert("Password should be more than 8 characters");
+			}
+		}
+		function confirmPassword(){
+			var psw1 = document.getElementById('password').value;
+			var psw2 = document.getElementById('conPassword').value;
+
+			if(psw2 != psw1){
+				alert("Your confirmed password is incorrect.Please confirm password correctly");
+
+			}
+			else if(psw2==""){
+				alert("Please confirm the password");
+			}
+
+		}
+
+
+		function validateForm(){
+			var fname = document.forms["signup"]["fname"].value;
+			var lname = document.forms["signup"]["lname"].value;
+			var email = document.forms["signup"]["email"].value;
+			var mobile = document.forms["signup"]["mobile"].value;
+			var password = document.forms["signup"]["password"].value;
+			
+
+			if(fname=="" || lname==""|| password=="" || mobile == ""){
+				alert("All text boxes should be filled ");
+				return false;
+			}
+		}
+	</script>
+	<style type="text/css">
+		input{
+
+		}
+	</style>
+</head>
+<body style="background-image: url(images/player2.png)" >
+	<li style="float: left"><img src="images/logo1.png" width="100px" height="100px"></li>
+		<li style="float: left"><h1 style="color: #83D615">Kandy Municipal Sports Complex</h1></li>
+  		<li><a class="active" href="#home"><h3>Login</h3></a></li>
+  		<li><a href="contactUs.html"><h3>Contact us</h3></a></li>
+  		<li>
+  			<div class="dropdown">
+  				<a href="bookingCourts.html" class="dropbtn"><h3>Booking</h3></a>
+    			<div class="dropdown-content">
+      				<a href="#">Badminton Courts</a>
+      				<a href="#">Tennis Courts</a>
+      				<a href="#">Table Tennis court</a>
+    			</div>
+  			</div>
+  		</li>
+  		<li><a href="about.html"><h3>About us</h3></a></li>
+  		<li><a href="index.html"><h3>Home</h3></a></li>
+	</ul>
+	<div class="row">
+		<div class="column1"> 
+		</div>
+		<div class="vl"></div>
+		<div class="column1" >
+			<div class="transbox">
+				<h1 style="color: #000000; padding-left:10px; text-align: center">SIGN UP</h1>
+				<form style="text-align: center; width: 400px; margin-left: 100px" class="signup" name="signup" onsubmit="validateForm()" action="insertAccountData.php" method="post">
+						<input type="text" name="fname" placeholder="First Name">
+						<input type="text" name="lname" placeholder="Last Name">
+						<input type="text" name="email" id="email" placeholder="Email Address" onchange="validateEmail()">
+						<input type="text" name="mobile" placeholder="Mobile Number" maxlength="10">
+						<input type="Password" name="password" id="password" placeholder="Password" onchange="validatePassword()">
+						<input type="Password" name="conPassword" id="conPassword" placeholder="Confirm password" onchange="confirmPassword()"><br><br>
+						<input type="submit" value="Sign up" class="submit">
+						
+				</form>
+			</div>
+
+			
+		</div>
+	</div>
+</body>
+</html>
